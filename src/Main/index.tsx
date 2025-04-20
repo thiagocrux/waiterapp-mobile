@@ -1,7 +1,6 @@
-import { Button } from '../components/Button';
-import { Categories } from '../components/Categories';
-import { Header } from '../components/Header';
-import { Menu } from '../components/Menu';
+import { useState } from 'react';
+
+import { Button, Categories, Header, Menu, TableModal } from '../components';
 
 import {
   CategoriesContainer,
@@ -12,20 +11,38 @@ import {
 } from './styles';
 
 export function Main() {
+  const [isTableModalVisible, setIsTableModalVisible] = useState(false);
+  const [selectedTable, setSelectedTable] = useState('');
+
+  function handleSaveTable(table: string) {
+    setSelectedTable(table);
+  }
+
   return (
-    <Container>
-      <Header />
-      <CategoriesContainer>
-        <Categories />
-      </CategoriesContainer>
-      <MenuContainer>
-        <Menu />
-      </MenuContainer>
+    <>
+      <Container>
+        <Header />
+        <CategoriesContainer>
+          <Categories />
+        </CategoriesContainer>
+        <MenuContainer>
+          <Menu />
+        </MenuContainer>
+      </Container>
       <Footer>
         <FooterContainer>
-          <Button onPress={() => alert('Novo pedido')}>Novo pedido</Button>
+          {!selectedTable && (
+            <Button onPress={() => setIsTableModalVisible(true)}>
+              Novo pedido
+            </Button>
+          )}
         </FooterContainer>
       </Footer>
-    </Container>
+      <TableModal
+        isVisible={isTableModalVisible}
+        onClose={() => setIsTableModalVisible(false)}
+        onSave={handleSaveTable}
+      />
+    </>
   );
 }
