@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
-import { Text } from '../Text';
+
+import { Text } from '../../components';
+
 import { Container } from './styles';
 
 interface ButtonProps {
