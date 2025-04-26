@@ -1,4 +1,5 @@
 export { Button } from './Button';
+export { Cart } from './Cart';
 export { Categories } from './Categories';
 export { Header } from './Header';
 export { CheckCircle, Close, Empty, MinusCircle, PlusCircle } from './Icons';
