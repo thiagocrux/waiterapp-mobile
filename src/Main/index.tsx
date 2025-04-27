@@ -5,11 +5,14 @@ import {
   Button,
   Cart,
   Categories,
+  Empty,
   Header,
   Menu,
   TableModal,
+  Text,
 } from '../components';
 
+import { products as productsMock } from '../mocks';
 import { CartItem, Product } from '../types';
 
 import {
@@ -26,6 +29,7 @@ export function Main() {
   const [selectedTable, setSelectedTable] = useState('');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [products, setProducts] = useState<Product[]>(productsMock);
 
   function handleTableSelection(table: string) {
     setSelectedTable(table);
@@ -102,9 +106,18 @@ export function Main() {
             <CategoriesContainer>
               <Categories />
             </CategoriesContainer>
-            <MenuContainer>
-              <Menu onAddToCart={incrementCartItem} />
-            </MenuContainer>
+            {products.length > 0 ? (
+              <MenuContainer>
+                <Menu onAddToCart={incrementCartItem} products={products} />
+              </MenuContainer>
+            ) : (
+              <CenteredContainer>
+                <Empty />
+                <Text color="#666" style={{ marginTop: 24 }}>
+                  Nenhum produto foi encontrado!
+                </Text>
+              </CenteredContainer>
+            )}
           </>
         )}
       </Container>
