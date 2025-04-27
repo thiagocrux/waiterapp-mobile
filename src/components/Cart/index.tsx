@@ -37,6 +37,7 @@ export function Cart({
   onConfirmOrder,
 }: CartProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const cartHasItems = cartItems.length > 0;
 
@@ -79,6 +80,7 @@ export function Cart({
                   <Text size={14} weight="600">
                     {cartItem.product.name}
                   </Text>
+
                   <Text size={14} color="#666">
                     {formatCurrency(cartItem.product.price)}
                   </Text>
@@ -111,7 +113,11 @@ export function Cart({
             <Text color="#999">Seu carrinho está vazio!</Text>
           )}
         </TotalContainer>
-        <Button disabled={!cartHasItems} onPress={handleOrderConfirmation}>
+        <Button
+          disabled={!cartHasItems}
+          isLoading={isLoading}
+          onPress={handleOrderConfirmation}
+        >
           Confirmar pedido
         </Button>
       </Summary>
