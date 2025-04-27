@@ -9,6 +9,7 @@ export const Item = styled.View`
 
 export const ProductContainer = styled.View`
   flex-direction: row;
+  gap: 12px;
 `;
 
 export const Image = styled.Image`
@@ -19,7 +20,7 @@ export const Image = styled.Image`
 
 export const QuantityContainer = styled.View`
   min-width: 20px;
-  margin-left: 12px;
+  align-items: center;
 `;
 
 export const ProductDetails = styled.View``;

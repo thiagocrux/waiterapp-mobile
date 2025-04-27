@@ -9,7 +9,7 @@ import {
   TableModal,
 } from '../components';
 
-import { CartItem } from '../types';
+import { CartItem, Product } from '../types';
 
 import {
   CategoriesContainer,
@@ -22,16 +22,7 @@ import {
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
   const [selectedTable, setSelectedTable] = useState('');
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    // {
-    //   quantity: 1,
-    //   product: products[0],
-    // },
-    // {
-    //   quantity: 2,
-    //   product: products[1],
-    // },
-  ]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   function handleTableSaving(table: string) {
     setSelectedTable(table);
@@ -39,6 +30,55 @@ export function Main() {
 
   function handleOrderCancellation() {
     setSelectedTable('');
+  }
+
+  function incrementCartItem(product: Product) {
+    if (!selectedTable) {
+      setIsTableModalVisible(true);
+    }
+
+    setCartItems((prevState) => {
+      const itemIndex = prevState.findIndex(
+        (item) => item.product._id === product._id
+      );
+
+      if (itemIndex < 0) {
+        return prevState.concat({ product, quantity: 1 });
+      }
+
+      const newCartItems = [...prevState];
+      const itemToModify = newCartItems[itemIndex];
+
+      newCartItems[itemIndex] = {
+        ...itemToModify,
+        quantity: itemToModify.quantity + 1,
+      };
+
+      return newCartItems;
+    });
+  }
+
+  function decreaseCartItem(product: Product) {
+    setCartItems((prevState) => {
+      const itemIndex = prevState.findIndex(
+        (item) => item.product._id === product._id
+      );
+
+      const newCartItems = [...prevState];
+      const itemToModify = prevState[itemIndex];
+
+      if (itemToModify.quantity === 1) {
+        newCartItems.splice(itemIndex, 1);
+        return newCartItems;
+      }
+
+      newCartItems[itemIndex] = {
+        ...itemToModify,
+        quantity: itemToModify.quantity - 1,
+      };
+
+      return newCartItems;
+    });
   }
 
   return (
@@ -52,7 +92,7 @@ export function Main() {
           <Categories />
         </CategoriesContainer>
         <MenuContainer>
-          <Menu />
+          <Menu onAddToCart={incrementCartItem} />
         </MenuContainer>
       </Container>
       <Footer>
@@ -62,7 +102,13 @@ export function Main() {
               Novo pedido
             </Button>
           )}
-          {selectedTable && <Cart cartItems={cartItems} />}
+          {selectedTable && (
+            <Cart
+              cartItems={cartItems}
+              onAddToCart={incrementCartItem}
+              onDecreaseFromCart={decreaseCartItem}
+            />
+          )}
         </FooterContainer>
       </Footer>
       <TableModal
