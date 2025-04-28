@@ -9,7 +9,7 @@ import {
 } from '../../components';
 import { CartItem, Product } from '../../types';
 
-import { formatCurrency } from '../../utils';
+import { api, formatCurrency } from '../../utils';
 
 import { useState } from 'react';
 import {
@@ -24,6 +24,7 @@ import {
 } from './styles';
 
 interface CartProps {
+  selectedTable: string;
   cartItems: CartItem[];
   onAddToCart: (product: Product) => void;
   onDecreaseFromCart: (product: Product) => void;
@@ -31,6 +32,7 @@ interface CartProps {
 }
 
 export function Cart({
+  selectedTable,
   cartItems,
   onAddToCart,
   onDecreaseFromCart,
@@ -47,7 +49,18 @@ export function Cart({
     }, 0);
   }
 
-  function handleOrderConfirmation() {
+  async function handleOrderConfirmation() {
+    setIsLoading(true);
+
+    await api.post('/orders', {
+      table: selectedTable,
+      products: cartItems.map((cartItem) => ({
+        product: cartItem.product._id,
+        quantity: cartItem.quantity,
+      })),
+    });
+
+    setIsLoading(false);
     setIsModalVisible(true);
   }
 
@@ -68,9 +81,7 @@ export function Cart({
           renderItem={({ item: cartItem }) => (
             <Item>
               <ProductContainer>
-                <Image
-                  source={{ uri: 'https://i.ibb.co/8nPZLXPC/afebda533a14.png' }}
-                />
+                <Image source={{ uri: cartItem.product.imagePath }} />
                 <QuantityContainer>
                   <Text size={14} color="#666">
                     {cartItem.quantity}x
