@@ -104,11 +104,11 @@ This section describes the available scripts in the `package.json` file and thei
 
 ## Screenshots
 
-![image](https://i.ibb.co/mCq3Gw5R/Screenshot-1745984174.png)
-![image](https://i.ibb.co/hxP4bN6h/Screenshot-1745984211.png)
-![image](https://i.ibb.co/23gTMp5G/Screenshot-1745984230.png)
-![image](https://i.ibb.co/mCPkVXtM/Screenshot-1745984248.png)
-![image](https://i.ibb.co/93gWDgyn/Screenshot-1745984252.png)
+![image](https://raw.githubusercontent.com/thiagocrux/_images/refs/heads/main/screenshots/waiterapp/waiterapp-mobile-screenshot-1.png)
+![image](https://raw.githubusercontent.com/thiagocrux/_images/refs/heads/main/screenshots/waiterapp/waiterapp-mobile-screenshot-2.png)
+![image](https://raw.githubusercontent.com/thiagocrux/_images/refs/heads/main/screenshots/waiterapp/waiterapp-mobile-screenshot-3.png)
+![image](https://raw.githubusercontent.com/thiagocrux/_images/refs/heads/main/screenshots/waiterapp/waiterapp-mobile-screenshot-4.png)
+![image](https://raw.githubusercontent.com/thiagocrux/_images/refs/heads/main/screenshots/waiterapp/waiterapp-mobile-screenshot-5.png)
 
 ## Useful links
 
