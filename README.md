@@ -1,6 +1,8 @@
 # WaiterApp (Mobile)
 
-Mobile client of the WaiterApp, an app made to help waiters to manage orders.
+Mobile client of the WaiterApp, an app made to help waiters to manage orders. This app enables you to create orders.
+
+For more details on other project components, check out the [API](https://github.com/thiagocrux/waiterapp-api) and [web client](https://github.com/thiagocrux/waiterapp-web) repositories.
 
 ## Technologies
 
@@ -99,6 +101,14 @@ This section describes the available scripts in the `package.json` file and thei
   ```bash
   pnpm prepare
   ```
+
+## Screenshots
+
+![image](https://i.ibb.co/mCq3Gw5R/Screenshot-1745984174.png)
+![image](https://i.ibb.co/hxP4bN6h/Screenshot-1745984211.png)
+![image](https://i.ibb.co/23gTMp5G/Screenshot-1745984230.png)
+![image](https://i.ibb.co/mCPkVXtM/Screenshot-1745984248.png)
+![image](https://i.ibb.co/93gWDgyn/Screenshot-1745984252.png)
 
 ## Useful links
 
