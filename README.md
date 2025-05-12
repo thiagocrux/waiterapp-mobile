@@ -110,7 +110,7 @@ This section describes the available scripts in the `package.json` file and thei
 ![image](https://raw.githubusercontent.com/thiagocrux/_images/refs/heads/main/screenshots/waiterapp/waiterapp-mobile-screenshot-4.png)
 ![image](https://raw.githubusercontent.com/thiagocrux/_images/refs/heads/main/screenshots/waiterapp/waiterapp-mobile-screenshot-5.png)
 
-## Useful links
+## Related links
 
 - [JStack](https://app.jstack.com.br/)
 
